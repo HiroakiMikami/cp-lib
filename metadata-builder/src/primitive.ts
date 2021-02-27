@@ -35,7 +35,7 @@ export function main(outdir: string) {
             ["float_to_integer", ["x"]],
             ["integer_to_float", ["x"]],
             ["integer_to_string", ["x"]],
-            ["float_to_string", ["x"]],
+            ["float_to_string", ["x", "precision"]],
             ["string_to_integer", ["x"]],
             ["string_to_float", ["x"]],
             // range
@@ -55,7 +55,13 @@ export function main(outdir: string) {
                     new Call(new Identifier("float_to_integer"), [new Argument(new Identifier("x"), null)]),
                     new Call(new Identifier("integer_to_float"), [new Argument(new Identifier("x"), null)]),
                     new Call(new Identifier("integer_to_string"), [new Argument(new Identifier("x"), null)]),
-                    new Call(new Identifier("float_to_String"), [new Argument(new Identifier("x"), null)]),
+                    new Call(
+                        new Identifier("float_to_String"),
+                        [
+                            new Argument(new Identifier("x"), null),
+                            new Argument(new Identifier("precision"), new Num("6", false)),
+                        ]
+                    ),
                     new Call(new Identifier("string_to_integer"), [new Argument(new Identifier("x"), null)]),
                     new Call(new Identifier("string_to_float"), [new Argument(new Identifier("x"), null)]),
                 ]

@@ -1,5 +1,7 @@
 #include <cstdint>
 #include <string>
+#include <sstream>
+#include <iomanip>
 
 //---code---
 struct Integer {
@@ -7,18 +9,24 @@ struct Integer {
     std::int64_t value;
 
     std::string debug_string() const { return std::to_string(this->value); }
+    template <typename Stream>
+    void dump(Stream& stream) const { stream << this->value; }
 };
 struct Float {
     Float(double value) : value(value) {}
     double value;
 
     std::string debug_string() const { return std::to_string(this->value); }
+    template <typename Stream>
+    void dump(Stream& stream) const { stream << this->value; }
 };
 struct String {
     String(std::string value) : value(value) {}
     std::string value;
 
     std::string debug_string() const { return this->value; }
+    template <typename Stream>
+    void dump(Stream& stream) const { stream << this->value; }
 };
 struct Bool {
     Bool(bool value) : value(value) {}
@@ -26,7 +34,13 @@ struct Bool {
         return this->value;
     }
     bool value;
-    std::string debug_string() const { return this->value ? "true" : "false"; }
+    std::string debug_string() const {
+        std::ostringstream oss;
+        this->dump(oss);
+        return oss.str();
+    }
+    template <typename Stream>
+    void dump(Stream& stream) const { stream << (this->value ? "true" : "false"); }
 };
 
 /* operators */
@@ -67,7 +81,12 @@ static Bool op_ne(Bool lhs, Bool rhs) { return Bool(lhs.value != rhs.value); }
 static Integer float_to_integer(Float x) { return Integer(int64_t(x.value)); }
 static Float integer_to_float(Integer x) { return Float(x.value); }
 static String integer_to_string(Integer x) { return String(std::to_string(x.value)); }
-static String float_to_string(Float x) { return String(std::to_string(x.value)); } // TODO precision
+static String float_to_string(Float x, Integer precision) {
+    std::ostringstream oss;
+    oss << std::fixed << std::setprecision(precision.value);
+    oss << x.value;
+    return String(oss.str());
+}
 static Integer string_to_integer(String x) { return Integer(std::stoi(x.value)); }
 static Float string_to_float(const String &x) { return Float(std::stod(x.value)); }
 
@@ -77,6 +96,15 @@ struct Range {
     Integer begin;
     Integer end;
     Integer step;
+    std::string debug_string() const {
+        std::ostringstream oss;
+        this->dump(oss);
+        return oss.str();
+    }
+    template <typename Stream>
+    void dump(Stream& stream) const {
+        stream << "Range(" << this->begin.value << ":" << this->end.value << ":" << this->step.value << ")";
+    }
 };
 static Range For(Integer b, Integer e) { return Range(b, e, Integer(1)); }
 static Range ReverseFor(Integer b, Integer e) { return Range(Integer(e.value - 1), Integer(b.value - 1), Integer(-1)); }

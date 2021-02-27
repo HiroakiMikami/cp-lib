@@ -71,11 +71,15 @@ TEST(PrimitiveTest, cast_test) {
     EXPECT_EQ(0L, float_to_integer(Float(0.5)).value);
     EXPECT_DOUBLE_EQ(0.0, integer_to_float(Integer(0)).value);
     EXPECT_EQ("0", integer_to_string(Integer(0)).value);
-    EXPECT_EQ("0.000000", float_to_string(Float(0)).value);
+    EXPECT_EQ("0.000000", float_to_string(Float(0), 6).value);
+    EXPECT_EQ("0.0", float_to_string(Float(0), 1).value);
     EXPECT_EQ(0L, string_to_integer(String("0")).value);
     EXPECT_DOUBLE_EQ(0.0, string_to_float(String("0")).value);
 }
 
+TEST(RangeTest,debug_string_test) {
+    EXPECT_EQ("Range(0:1:1)", Range(Integer(0), Integer(1), Integer(1)).debug_string());
+}
 TEST(RangeTest, foreach_test) {
     std::vector<int64_t> ret;
     foreach(Rep(3), [&](auto i) { ret.push_back(i); });
