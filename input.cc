@@ -6,49 +6,60 @@
 #include "array.cc"
 
 //---code---
-static void _initialize() {
+static void _initialize()
+{
     static bool initialized = false;
-    if (!initialized) {
+    if (!initialized)
+    {
         std::cin.tie(0);
-        #ifndef __TEST__
+#ifndef __TEST__
         std::ios_base::sync_with_stdio(false);
-        #endif
+#endif
     }
     initialized = true;
 }
 
 template <typename V>
-static V _read() {
+struct Input
+{
+};
+template <typename V>
+static V read(const Input<V> &x)
+{
     _initialize();
     V v;
     std::cin >> v;
     return v;
 }
+static Integer read(const Input<Integer> &x)
+{
+    return Integer(read(Input<int64_t>()));
+}
+static Float read(const Input<Float> &x)
+{
+    return Float(read(Input<double>()));
+}
+static String read(const Input<String> &x)
+{
+    return String(read(Input<std::string>()));
+}
 
-static Integer read_integer() {
-    return Integer(_read<int64_t>());
-}
-static Float read_float() {
-    return Float(_read<double>());
-}
-static String read_string() {
-    return String(_read<std::string>());
-}
-template <typename V, typename F>
-static Array<V> _read_array(Integer N, F read) {
-    Array<V> out(N);
-    for (int64_t i = 0; i < N.value; ++i) {
-        out.value.push_back(read());
+template <typename V>
+struct ArrayInput
+{
+    ArrayInput(Integer N) : N(N)
+    {
+    }
+    Integer N;
+};
+
+template <typename V>
+static Array<V> read(const ArrayInput<V> &x)
+{
+    Array<V> out(x.N);
+    for (int64_t i = 0; i < x.N.value; ++i)
+    {
+        out.value.push_back(read(Input<V>()));
     }
     return out;
-}
-
-static Array<Integer> read_integer_array(Integer N) {
-    return _read_array<Integer>(N, read_integer);
-}
-static Array<Float> read_float_array(Integer N) {
-    return _read_array<Float>(N, read_float);
-}
-static Array<String> read_string_array(Integer N) {
-    return _read_array<String>(N, read_string);
 }

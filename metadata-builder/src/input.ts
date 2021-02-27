@@ -1,17 +1,18 @@
-import { Call, Identifier, Assign, Argument } from "cp-dsl/out/src/syntax";
+import { Call, Identifier, Assign, Argument, Create, TypeIdentifier, PolymorphicType, TypeArgument } from "cp-dsl/out/src/syntax";
 import { save } from "./_utils";
 
 export function main(outdir: string) {
     save(outdir + "./input.json", {
-        typevarNames: new Map(),
-        createArgNames: new Map(),
+        typevarNames: new Map([
+            ["Input", ["V"]],
+            ["ArrayInput", ["V"]]
+        ]),
+        createArgNames: new Map([
+            ["Input", []],
+            ["ArrayInput", ["N"]]
+        ]),
         argNames: new Map([
-            ["read_integer", []],
-            ["read_float", []],
-            ["read_string", []],
-            ["read_integer_array", ["N"]],
-            ["read_float_array", ["N"]],
-            ["read_string_array", ["N"]],
+            ["read", ["x"]],
         ]),
         dependencies: new Set(["primitive", "array"]),
         snippets: [
@@ -22,40 +23,103 @@ export function main(outdir: string) {
                     new Assign(
                         new Identifier("_N"),
                         true,
-                        new Call(new Identifier("read_integer"), []),
+                        new Call(
+                            new Identifier("read"),
+                            [new Argument(
+                                new Identifier("x"),
+                                new Create(
+                                    new PolymorphicType(
+                                        new TypeIdentifier("Input"),
+                                        [new TypeArgument("V", new TypeIdentifier("Integer"))]
+                                    ),
+                                    [],
+                                )
+                            )]
+                        ),
                     ),
                     new Assign(
                         new Identifier("_f"),
                         true,
-                        new Call(new Identifier("read_float"), []),
+                        new Call(
+                            new Identifier("read"),
+                            [new Argument(
+                                new Identifier("x"),
+                                new Create(
+                                    new PolymorphicType(
+                                        new TypeIdentifier("Input"),
+                                        [new TypeArgument("V", new TypeIdentifier("Float"))]
+                                    ),
+                                    [],
+                                )
+                            )]
+                        ),
                     ),
                     new Assign(
                         new Identifier("_str"),
                         true,
-                        new Call(new Identifier("read_string"), []),
-                    ),
-                    new Assign(
-                        new Identifier("_xs"),
-                        true,
                         new Call(
-                            new Identifier("read_integer_array"),
-                            [new Argument(new Identifier("N"), null)],
+                            new Identifier("read"),
+                            [new Argument(
+                                new Identifier("x"),
+                                new Create(
+                                    new PolymorphicType(
+                                        new TypeIdentifier("Input"),
+                                        [new TypeArgument("V", new TypeIdentifier("String"))]
+                                    ),
+                                    [],
+                                )
+                            )]
                         ),
                     ),
                     new Assign(
                         new Identifier("_xs"),
                         true,
                         new Call(
-                            new Identifier("read_float_array"),
-                            [new Argument(new Identifier("N"), null)],
+                            new Identifier("read"),
+                            [new Argument(
+                                new Identifier("x"),
+                                new Create(
+                                    new PolymorphicType(
+                                        new TypeIdentifier("ArrayInput"),
+                                        [new TypeArgument("V", new TypeIdentifier("Integer"))]
+                                    ),
+                                    [new Argument(new Identifier("N"), null)],
+                                )
+                            )]
                         ),
                     ),
                     new Assign(
-                        new Identifier("_xs"),
+                        new Identifier("_fs"),
                         true,
                         new Call(
-                            new Identifier("read_string_array"),
-                            [new Argument(new Identifier("N"), null)],
+                            new Identifier("read"),
+                            [new Argument(
+                                new Identifier("x"),
+                                new Create(
+                                    new PolymorphicType(
+                                        new TypeIdentifier("ArrayInput"),
+                                        [new TypeArgument("V", new TypeIdentifier("Float"))]
+                                    ),
+                                    [new Argument(new Identifier("N"), null)],
+                                )
+                            )]
+                        ),
+                    ),
+                    new Assign(
+                        new Identifier("_ss"),
+                        true,
+                        new Call(
+                            new Identifier("read"),
+                            [new Argument(
+                                new Identifier("x"),
+                                new Create(
+                                    new PolymorphicType(
+                                        new TypeIdentifier("ArrayInput"),
+                                        [new TypeArgument("V", new TypeIdentifier("String"))]
+                                    ),
+                                    [new Argument(new Identifier("N"), null)],
+                                )
+                            )]
                         ),
                     ),
                 ]

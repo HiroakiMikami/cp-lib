@@ -1,18 +1,21 @@
 {
-  "typevarNames": {},
-  "createArgNames": {},
+  "typevarNames": {
+    "Input": [
+      "V"
+    ],
+    "ArrayInput": [
+      "V"
+    ]
+  },
+  "createArgNames": {
+    "Input": [],
+    "ArrayInput": [
+      "N"
+    ]
+  },
   "argNames": {
-    "read_integer": [],
-    "read_float": [],
-    "read_string": [],
-    "read_integer_array": [
-      "N"
-    ],
-    "read_float_array": [
-      "N"
-    ],
-    "read_string_array": [
-      "N"
+    "read": [
+      "x"
     ]
   },
   "dependencies": [
@@ -35,9 +38,38 @@
             "_type": "Call",
             "func": {
               "_type": "Identifier",
-              "id": "read_integer"
+              "id": "read"
             },
-            "args": []
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "x"
+                },
+                "value": {
+                  "_type": "Create",
+                  "type": {
+                    "_type": "PolymorphicType",
+                    "id": {
+                      "_type": "TypeIdentifier",
+                      "id": "Input"
+                    },
+                    "typevars": [
+                      {
+                        "_type": "TypeArgument",
+                        "name": "V",
+                        "type": {
+                          "_type": "TypeIdentifier",
+                          "id": "Integer"
+                        }
+                      }
+                    ]
+                  },
+                  "args": []
+                }
+              }
+            ]
           }
         },
         {
@@ -51,9 +83,38 @@
             "_type": "Call",
             "func": {
               "_type": "Identifier",
-              "id": "read_float"
+              "id": "read"
             },
-            "args": []
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "x"
+                },
+                "value": {
+                  "_type": "Create",
+                  "type": {
+                    "_type": "PolymorphicType",
+                    "id": {
+                      "_type": "TypeIdentifier",
+                      "id": "Input"
+                    },
+                    "typevars": [
+                      {
+                        "_type": "TypeArgument",
+                        "name": "V",
+                        "type": {
+                          "_type": "TypeIdentifier",
+                          "id": "Float"
+                        }
+                      }
+                    ]
+                  },
+                  "args": []
+                }
+              }
+            ]
           }
         },
         {
@@ -67,32 +128,36 @@
             "_type": "Call",
             "func": {
               "_type": "Identifier",
-              "id": "read_string"
-            },
-            "args": []
-          }
-        },
-        {
-          "_type": "Assign",
-          "lhs": {
-            "_type": "Identifier",
-            "id": "_xs"
-          },
-          "isDefine": true,
-          "rhs": {
-            "_type": "Call",
-            "func": {
-              "_type": "Identifier",
-              "id": "read_integer_array"
+              "id": "read"
             },
             "args": [
               {
                 "_type": "Argument",
                 "name": {
                   "_type": "Identifier",
-                  "id": "N"
+                  "id": "x"
                 },
-                "value": null
+                "value": {
+                  "_type": "Create",
+                  "type": {
+                    "_type": "PolymorphicType",
+                    "id": {
+                      "_type": "TypeIdentifier",
+                      "id": "Input"
+                    },
+                    "typevars": [
+                      {
+                        "_type": "TypeArgument",
+                        "name": "V",
+                        "type": {
+                          "_type": "TypeIdentifier",
+                          "id": "String"
+                        }
+                      }
+                    ]
+                  },
+                  "args": []
+                }
               }
             ]
           }
@@ -108,16 +173,45 @@
             "_type": "Call",
             "func": {
               "_type": "Identifier",
-              "id": "read_float_array"
+              "id": "read"
             },
             "args": [
               {
                 "_type": "Argument",
                 "name": {
                   "_type": "Identifier",
-                  "id": "N"
+                  "id": "x"
                 },
-                "value": null
+                "value": {
+                  "_type": "Create",
+                  "type": {
+                    "_type": "PolymorphicType",
+                    "id": {
+                      "_type": "TypeIdentifier",
+                      "id": "ArrayInput"
+                    },
+                    "typevars": [
+                      {
+                        "_type": "TypeArgument",
+                        "name": "V",
+                        "type": {
+                          "_type": "TypeIdentifier",
+                          "id": "Integer"
+                        }
+                      }
+                    ]
+                  },
+                  "args": [
+                    {
+                      "_type": "Argument",
+                      "name": {
+                        "_type": "Identifier",
+                        "id": "N"
+                      },
+                      "value": null
+                    }
+                  ]
+                }
               }
             ]
           }
@@ -126,23 +220,106 @@
           "_type": "Assign",
           "lhs": {
             "_type": "Identifier",
-            "id": "_xs"
+            "id": "_fs"
           },
           "isDefine": true,
           "rhs": {
             "_type": "Call",
             "func": {
               "_type": "Identifier",
-              "id": "read_string_array"
+              "id": "read"
             },
             "args": [
               {
                 "_type": "Argument",
                 "name": {
                   "_type": "Identifier",
-                  "id": "N"
+                  "id": "x"
                 },
-                "value": null
+                "value": {
+                  "_type": "Create",
+                  "type": {
+                    "_type": "PolymorphicType",
+                    "id": {
+                      "_type": "TypeIdentifier",
+                      "id": "ArrayInput"
+                    },
+                    "typevars": [
+                      {
+                        "_type": "TypeArgument",
+                        "name": "V",
+                        "type": {
+                          "_type": "TypeIdentifier",
+                          "id": "Float"
+                        }
+                      }
+                    ]
+                  },
+                  "args": [
+                    {
+                      "_type": "Argument",
+                      "name": {
+                        "_type": "Identifier",
+                        "id": "N"
+                      },
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "_type": "Assign",
+          "lhs": {
+            "_type": "Identifier",
+            "id": "_ss"
+          },
+          "isDefine": true,
+          "rhs": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "read"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "x"
+                },
+                "value": {
+                  "_type": "Create",
+                  "type": {
+                    "_type": "PolymorphicType",
+                    "id": {
+                      "_type": "TypeIdentifier",
+                      "id": "ArrayInput"
+                    },
+                    "typevars": [
+                      {
+                        "_type": "TypeArgument",
+                        "name": "V",
+                        "type": {
+                          "_type": "TypeIdentifier",
+                          "id": "String"
+                        }
+                      }
+                    ]
+                  },
+                  "args": [
+                    {
+                      "_type": "Argument",
+                      "name": {
+                        "_type": "Identifier",
+                        "id": "N"
+                      },
+                      "value": null
+                    }
+                  ]
+                }
               }
             ]
           }
