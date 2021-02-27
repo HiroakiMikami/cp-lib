@@ -2,16 +2,14 @@
   "typevarNames": {},
   "createArgNames": {},
   "argNames": {
-    "sqrt": [
+    "set_precision": [
+      "precision"
+    ],
+    "print": [
       "v"
     ],
-    "min": [
-      "v0",
-      "v1"
-    ],
-    "max": [
-      "v0",
-      "v1"
+    "dump": [
+      "v"
     ]
   },
   "dependencies": [
@@ -19,75 +17,68 @@
   ],
   "snippets": [
     {
-      "name": "Math",
+      "name": "Output",
       "color": "0",
       "values": [
         {
-          "_type": "Call",
-          "func": {
-            "_type": "Identifier",
-            "id": "sqrt"
-          },
-          "args": [
-            {
-              "_type": "Argument",
-              "name": {
-                "_type": "Identifier",
-                "id": "v"
-              },
-              "value": null
-            }
-          ]
+          "_type": "Do",
+          "expr": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "set_precision"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "precision"
+                },
+                "value": null
+              }
+            ]
+          }
         },
         {
-          "_type": "Call",
-          "func": {
-            "_type": "Identifier",
-            "id": "min"
-          },
-          "args": [
-            {
-              "_type": "Argument",
-              "name": {
-                "_type": "Identifier",
-                "id": "v0"
-              },
-              "value": null
+          "_type": "Do",
+          "expr": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "print"
             },
-            {
-              "_type": "Argument",
-              "name": {
-                "_type": "Identifier",
-                "id": "v1"
-              },
-              "value": null
-            }
-          ]
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "v"
+                },
+                "value": null
+              }
+            ]
+          }
         },
         {
-          "_type": "Call",
-          "func": {
-            "_type": "Identifier",
-            "id": "max"
-          },
-          "args": [
-            {
-              "_type": "Argument",
-              "name": {
-                "_type": "Identifier",
-                "id": "v0"
-              },
-              "value": null
+          "_type": "Do",
+          "expr": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "dump"
             },
-            {
-              "_type": "Argument",
-              "name": {
-                "_type": "Identifier",
-                "id": "v1"
-              },
-              "value": null
-            }
-          ]
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "v"
+                },
+                "value": null
+              }
+            ]
+          }
         }
       ]
     }

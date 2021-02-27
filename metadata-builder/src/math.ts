@@ -2,7 +2,7 @@ import { Call, Identifier, Argument } from "cp-dsl/out/src/syntax";
 import { save } from "./_utils";
 
 export function main(outdir: string) {
-    save(outdir + "./output.json", {
+    save(outdir + "./math.json", {
         typevarNames: new Map(),
         createArgNames: new Map(),
         argNames: new Map([
