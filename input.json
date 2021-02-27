@@ -4,10 +4,20 @@
   "argNames": {
     "read_integer": [],
     "read_float": [],
-    "read_string": []
+    "read_string": [],
+    "read_integer_array": [
+      "N"
+    ],
+    "read_float_array": [
+      "N"
+    ],
+    "read_string_array": [
+      "N"
+    ]
   },
   "dependencies": [
-    "primitive"
+    "primitive",
+    "array"
   ],
   "snippets": [
     {
@@ -60,6 +70,81 @@
               "id": "read_string"
             },
             "args": []
+          }
+        },
+        {
+          "_type": "Assign",
+          "lhs": {
+            "_type": "Identifier",
+            "id": "_xs"
+          },
+          "isDefine": true,
+          "rhs": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "read_integer_array"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "N"
+                },
+                "value": null
+              }
+            ]
+          }
+        },
+        {
+          "_type": "Assign",
+          "lhs": {
+            "_type": "Identifier",
+            "id": "_xs"
+          },
+          "isDefine": true,
+          "rhs": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "read_float_array"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "N"
+                },
+                "value": null
+              }
+            ]
+          }
+        },
+        {
+          "_type": "Assign",
+          "lhs": {
+            "_type": "Identifier",
+            "id": "_xs"
+          },
+          "isDefine": true,
+          "rhs": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "read_string_array"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "N"
+                },
+                "value": null
+              }
+            ]
           }
         }
       ]

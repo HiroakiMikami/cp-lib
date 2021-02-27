@@ -1,4 +1,4 @@
-import { Call, Identifier, Assign } from "cp-dsl/out/src/syntax";
+import { Call, Identifier, Assign, Argument } from "cp-dsl/out/src/syntax";
 import { save } from "./_utils";
 
 export function main(outdir: string) {
@@ -9,8 +9,11 @@ export function main(outdir: string) {
             ["read_integer", []],
             ["read_float", []],
             ["read_string", []],
+            ["read_integer_array", ["N"]],
+            ["read_float_array", ["N"]],
+            ["read_string_array", ["N"]],
         ]),
-        dependencies: new Set(["primitive"]),
+        dependencies: new Set(["primitive", "array"]),
         snippets: [
             {
                 name: "Input",
@@ -30,6 +33,30 @@ export function main(outdir: string) {
                         new Identifier("_str"),
                         true,
                         new Call(new Identifier("read_string"), []),
+                    ),
+                    new Assign(
+                        new Identifier("_xs"),
+                        true,
+                        new Call(
+                            new Identifier("read_integer_array"),
+                            [new Argument(new Identifier("N"), null)],
+                        ),
+                    ),
+                    new Assign(
+                        new Identifier("_xs"),
+                        true,
+                        new Call(
+                            new Identifier("read_float_array"),
+                            [new Argument(new Identifier("N"), null)],
+                        ),
+                    ),
+                    new Assign(
+                        new Identifier("_xs"),
+                        true,
+                        new Call(
+                            new Identifier("read_string_array"),
+                            [new Argument(new Identifier("N"), null)],
+                        ),
                     ),
                 ]
             },

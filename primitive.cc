@@ -1,3 +1,5 @@
+#pragma once
+
 #include <cstdint>
 #include <string>
 #include <sstream>
@@ -12,6 +14,9 @@ struct Integer {
     std::string debug_string() const { return std::to_string(this->value); }
     template <typename Stream>
     void dump(Stream& stream) const { stream << this->value; }
+    bool operator==(const Integer &rhs) const {
+        return this->value == rhs.value;
+    }
 };
 struct Float {
     Float(double value) : value(value) {}
@@ -20,6 +25,9 @@ struct Float {
     std::string debug_string() const { return std::to_string(this->value); }
     template <typename Stream>
     void dump(Stream& stream) const { stream << this->value; }
+    bool operator==(const Float &rhs) const {
+        return this->value == rhs.value;
+    }
 };
 struct String {
     String(std::string value) : value(value) {}
@@ -28,6 +36,9 @@ struct String {
     std::string debug_string() const { return this->value; }
     template <typename Stream>
     void dump(Stream& stream) const { stream << this->value; }
+    bool operator==(const String &rhs) const {
+        return this->value == rhs.value;
+    }
 };
 struct Bool {
     Bool(bool value) : value(value) {}
@@ -42,6 +53,9 @@ struct Bool {
     }
     template <typename Stream>
     void dump(Stream& stream) const { stream << (this->value ? "true" : "false"); }
+    bool operator==(const Bool &rhs) const {
+        return this->value == rhs.value;
+    }
 };
 
 /* operators */
@@ -49,8 +63,9 @@ static Integer op_add(Integer lhs, Integer rhs) { return Integer{lhs.value + rhs
 static Integer op_sub(Integer lhs, Integer rhs) { return Integer{lhs.value - rhs.value}; }
 static Integer op_mul(Integer lhs, Integer rhs) { return Integer{lhs.value * rhs.value}; }
 static Integer op_div(Integer lhs, Integer rhs) { return Integer{lhs.value / rhs.value}; }
-static Bool op_eq(Integer lhs, Integer rhs) { return Bool(lhs.value == rhs.value); }
-static Bool op_ne(Integer lhs, Integer rhs) { return Bool(lhs.value != rhs.value); }
+static Bool op_eq(Integer lhs, Integer rhs) { return Bool(lhs == rhs); }
+template <typename V0, typename V1>
+static Bool op_ne(V0 lhs, V1 rhs) { return Bool(!op_eq(lhs, rhs)); }
 static Bool op_gt(Integer lhs, Integer rhs) { return Bool(lhs.value > rhs.value); }
 static Bool op_ge(Integer lhs, Integer rhs) { return Bool(lhs.value >= rhs.value); }
 static Bool op_lt(Integer lhs, Integer rhs) { return Bool(lhs.value < rhs.value); }

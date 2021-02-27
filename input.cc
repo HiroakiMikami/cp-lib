@@ -1,6 +1,9 @@
+#pragma once
+
 #include <iostream>
 
 #include "primitive.cc"
+#include "array.cc"
 
 //---code---
 static void _initialize() {
@@ -14,21 +17,38 @@ static void _initialize() {
     initialized = true;
 }
 
-static Integer read_integer() {
+template <typename V>
+static V _read() {
     _initialize();
-    int64_t x;
-    std::cin >> x;
-    return Integer(x);
+    V v;
+    std::cin >> v;
+    return v;
+}
+
+static Integer read_integer() {
+    return Integer(_read<int64_t>());
 }
 static Float read_float() {
-    _initialize();
-    double x;
-    std::cin >> x;
-    return Float(x);
+    return Float(_read<double>());
 }
 static String read_string() {
-    _initialize();
-    std::string x;
-    std::cin >> x;
-    return String(x);
+    return String(_read<std::string>());
+}
+template <typename V, typename F>
+static Array<V> _read_array(Integer N, F read) {
+    Array<V> out(N);
+    for (int64_t i = 0; i < N.value; ++i) {
+        out.value.push_back(read());
+    }
+    return out;
+}
+
+static Array<Integer> read_integer_array(Integer N) {
+    return _read_array<Integer>(N, read_integer);
+}
+static Array<Float> read_float_array(Integer N) {
+    return _read_array<Float>(N, read_float);
+}
+static Array<String> read_string_array(Integer N) {
+    return _read_array<String>(N, read_string);
 }

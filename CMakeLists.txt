@@ -6,7 +6,7 @@ enable_testing()
 
 # C++ settings
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -D_GLIBCXX_DEBUG -D__LOCAL__ -D__TEST__")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -D_GLIBCXX_DEBUG -D__LOCAL__ -D__TEST__ -Wno-unused-function")
 
 # Enable google test
 find_package(GTest REQUIRED)
