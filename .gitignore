@@ -1,0 +1,12 @@
+*
+!*/
+!/.gitignore
+!/CMakeLists.txt
+!/Makefile
+!/*.cc
+!/*.h
+!/*.json
+!/metadata-builder/package.json
+!/metadata-builder/package-lock.json
+!/metadata-builder/tsconfig.json
+!/metadata-builder/src/*.ts

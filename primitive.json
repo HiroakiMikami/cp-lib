@@ -1,0 +1,371 @@
+{
+  "typevarNames": {},
+  "createArgNames": {
+    "Integer": [
+      "x"
+    ],
+    "Float": [
+      "x"
+    ],
+    "String": [
+      "x"
+    ],
+    "Bool": [
+      "x"
+    ],
+    "Range": [
+      "begin",
+      "end",
+      "step"
+    ]
+  },
+  "argNames": {
+    "op_add": [
+      "lhs",
+      "rhs"
+    ],
+    "op_sub": [
+      "lhs",
+      "rhs"
+    ],
+    "op_mul": [
+      "lhs",
+      "rhs"
+    ],
+    "op_div": [
+      "lhs",
+      "rhs"
+    ],
+    "op_eq": [
+      "lhs",
+      "rhs"
+    ],
+    "op_ne": [
+      "lhs",
+      "rhs"
+    ],
+    "op_gt": [
+      "lhs",
+      "rhs"
+    ],
+    "op_ge": [
+      "lhs",
+      "rhs"
+    ],
+    "op_lt": [
+      "lhs",
+      "rhs"
+    ],
+    "op_le": [
+      "lhs",
+      "rhs"
+    ],
+    "op_mod": [
+      "lhs",
+      "rhs"
+    ],
+    "op_bitand": [
+      "lhs",
+      "rhs"
+    ],
+    "op_bitor": [
+      "lhs",
+      "rhs"
+    ],
+    "op_xor": [
+      "lhs",
+      "rhs"
+    ],
+    "op_leftshift": [
+      "lhs",
+      "rhs"
+    ],
+    "op_rightshift": [
+      "lhs",
+      "rhs"
+    ],
+    "op_and": [
+      "lhs",
+      "rhs"
+    ],
+    "op_or": [
+      "lhs",
+      "rhs"
+    ],
+    "float_to_integer": [
+      "x"
+    ],
+    "integer_to_float": [
+      "x"
+    ],
+    "integer_to_string": [
+      "x"
+    ],
+    "float_to_string": [
+      "x"
+    ],
+    "string_to_integer": [
+      "x"
+    ],
+    "string_to_float": [
+      "x"
+    ],
+    "For": [
+      "b",
+      "e"
+    ],
+    "ReverseFor": [
+      "b",
+      "e"
+    ],
+    "Rep": [
+      "N"
+    ],
+    "ReverseRep": [
+      "N"
+    ]
+  },
+  "dependencies": [],
+  "snippets": [
+    {
+      "name": "Base",
+      "color": "0",
+      "values": [
+        {
+          "_type": "Num",
+          "value": "0",
+          "isFloat": false
+        },
+        {
+          "_type": "Num",
+          "value": "1",
+          "isFloat": false
+        },
+        {
+          "_type": "Call",
+          "func": {
+            "_type": "Identifier",
+            "id": "float_to_integer"
+          },
+          "args": [
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "x"
+              },
+              "value": null
+            }
+          ]
+        },
+        {
+          "_type": "Call",
+          "func": {
+            "_type": "Identifier",
+            "id": "integer_to_float"
+          },
+          "args": [
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "x"
+              },
+              "value": null
+            }
+          ]
+        },
+        {
+          "_type": "Call",
+          "func": {
+            "_type": "Identifier",
+            "id": "integer_to_string"
+          },
+          "args": [
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "x"
+              },
+              "value": null
+            }
+          ]
+        },
+        {
+          "_type": "Call",
+          "func": {
+            "_type": "Identifier",
+            "id": "float_to_String"
+          },
+          "args": [
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "x"
+              },
+              "value": null
+            }
+          ]
+        },
+        {
+          "_type": "Call",
+          "func": {
+            "_type": "Identifier",
+            "id": "string_to_integer"
+          },
+          "args": [
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "x"
+              },
+              "value": null
+            }
+          ]
+        },
+        {
+          "_type": "Call",
+          "func": {
+            "_type": "Identifier",
+            "id": "string_to_float"
+          },
+          "args": [
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "x"
+              },
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Loop",
+      "color": "0",
+      "values": [
+        {
+          "_type": "Loop",
+          "id": {
+            "_type": "Identifier",
+            "id": "_i"
+          },
+          "iterable": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "For"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "b"
+                },
+                "value": null
+              },
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "e"
+                },
+                "value": null
+              }
+            ]
+          },
+          "body": null
+        },
+        {
+          "_type": "Loop",
+          "id": {
+            "_type": "Identifier",
+            "id": "_i"
+          },
+          "iterable": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "ReverseFor"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "b"
+                },
+                "value": null
+              },
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "e"
+                },
+                "value": null
+              }
+            ]
+          },
+          "body": null
+        },
+        {
+          "_type": "Loop",
+          "id": {
+            "_type": "Identifier",
+            "id": "_i"
+          },
+          "iterable": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "Rep"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "N"
+                },
+                "value": null
+              }
+            ]
+          },
+          "body": null
+        },
+        {
+          "_type": "Loop",
+          "id": {
+            "_type": "Identifier",
+            "id": "_i"
+          },
+          "iterable": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "ReverseRep"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "N"
+                },
+                "value": null
+              }
+            ]
+          },
+          "body": null
+        }
+      ]
+    }
+  ]
+}
