@@ -97,6 +97,9 @@
       "lhs",
       "rhs"
     ],
+    "not": [
+      "v"
+    ],
     "float_to_integer": [
       "x"
     ],
@@ -155,6 +158,23 @@
           "_type": "Num",
           "value": "1",
           "isFloat": false
+        },
+        {
+          "_type": "Call",
+          "func": {
+            "_type": "Identifier",
+            "id": "not"
+          },
+          "args": [
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "x"
+              },
+              "value": null
+            }
+          ]
         },
         {
           "_type": "Call",

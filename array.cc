@@ -33,31 +33,24 @@ struct Array
             }
         }
     }
+    bool operator==(const Array<V> &rhs) const
+    {
+
+        if (this->value.size() != rhs.value.size())
+        {
+            return false;
+        }
+        for (size_t i = 0; i < this->value.size(); ++i)
+        {
+            if (!op_eq(this->value[i], rhs.value[i]).value)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
     std::vector<V> value;
 };
-
-/* operators */
-template <typename V>
-static Bool op_eq(const Array<V> &lhs, const Array<V> &rhs)
-{
-    if (lhs.value.size() != rhs.value.size())
-    {
-        return Bool(false);
-    }
-    for (size_t i = 0; i < lhs.value.size(); ++i)
-    {
-        if (!op_eq(lhs.value[i], rhs.value[i]).value)
-        {
-            return Bool(false);
-        }
-    }
-    return Bool(true);
-}
-template <typename V>
-static Bool op_ne(const Array<V> &lhs, const Array<V> &rhs)
-{
-    return Bool(!op_eq(lhs, rhs).value);
-}
 
 /* primitives */
 template <typename V>
@@ -94,9 +87,11 @@ static void reverse(Array<V> &container)
     std::reverse(container.value.begin(), container.value.end());
 }
 
-struct Less {
+struct Less
+{
     template <typename V>
-    Bool operator()(const V &lhs, const V &rhs) const {
+    Bool operator()(const V &lhs, const V &rhs) const
+    {
         return op_lt(lhs, rhs);
     }
 };

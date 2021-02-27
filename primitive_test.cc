@@ -72,6 +72,8 @@ TEST(BoolTest, op_test)
     EXPECT_TRUE(op_ne(t, f));
     EXPECT_FALSE(op_and(t, f));
     EXPECT_TRUE(op_or(t, f));
+    EXPECT_TRUE(not_(f));
+    EXPECT_FALSE(not_(t));
 }
 
 TEST(PrimitiveTest, cast_test)

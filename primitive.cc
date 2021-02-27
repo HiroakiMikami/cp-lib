@@ -59,13 +59,19 @@ struct Bool {
 };
 
 /* operators */
+template <typename V0, typename V1>
+static Bool op_eq(V0 lhs, V1 rhs) { return Bool(lhs == rhs); }
+template <typename V0, typename V1>
+static Bool op_ne(V0 lhs, V1 rhs) { return not_(op_eq(lhs, rhs)); }
+template <typename V0, typename V1>
+static Bool op_ge(V0 lhs, V1 rhs) { return op_or(op_gt(lhs, rhs), op_eq(lhs, rhs)); }
+template <typename V0, typename V1>
+static Bool op_le(V0 lhs, V1 rhs) { return op_or(op_lt(lhs, rhs), op_eq(lhs, rhs)); }
+
 static Integer op_add(Integer lhs, Integer rhs) { return Integer{lhs.value + rhs.value}; }
 static Integer op_sub(Integer lhs, Integer rhs) { return Integer{lhs.value - rhs.value}; }
 static Integer op_mul(Integer lhs, Integer rhs) { return Integer{lhs.value * rhs.value}; }
 static Integer op_div(Integer lhs, Integer rhs) { return Integer{lhs.value / rhs.value}; }
-static Bool op_eq(Integer lhs, Integer rhs) { return Bool(lhs == rhs); }
-template <typename V0, typename V1>
-static Bool op_ne(V0 lhs, V1 rhs) { return Bool(!op_eq(lhs, rhs)); }
 static Bool op_gt(Integer lhs, Integer rhs) { return Bool(lhs.value > rhs.value); }
 static Bool op_ge(Integer lhs, Integer rhs) { return Bool(lhs.value >= rhs.value); }
 static Bool op_lt(Integer lhs, Integer rhs) { return Bool(lhs.value < rhs.value); }
@@ -81,8 +87,6 @@ static Float op_add(Float lhs, Float rhs) { return Float{lhs.value + rhs.value};
 static Float op_sub(Float lhs, Float rhs) { return Float{lhs.value - rhs.value}; }
 static Float op_mul(Float lhs, Float rhs) { return Float{lhs.value * rhs.value}; }
 static Float op_div(Float lhs, Float rhs) { return Float{lhs.value / rhs.value}; }
-static Bool op_eq(Float lhs, Float rhs) { return Bool(lhs.value == rhs.value); }
-static Bool op_ne(Float lhs, Float rhs) { return Bool(lhs.value != rhs.value); }
 static Bool op_gt(Float lhs, Float rhs) { return Bool(lhs.value > rhs.value); }
 static Bool op_ge(Float lhs, Float rhs) { return Bool(lhs.value >= rhs.value); }
 static Bool op_lt(Float lhs, Float rhs) { return Bool(lhs.value < rhs.value); }
@@ -90,8 +94,8 @@ static Bool op_le(Float lhs, Float rhs) { return Bool(lhs.value <= rhs.value); }
 
 static Bool op_and(Bool lhs, Bool rhs) { return Bool(lhs.value && rhs.value); }
 static Bool op_or(Bool lhs, Bool rhs) { return Bool(lhs.value || rhs.value); }
-static Bool op_eq(Bool lhs, Bool rhs) { return Bool(lhs.value == rhs.value); }
-static Bool op_ne(Bool lhs, Bool rhs) { return Bool(lhs.value != rhs.value); }
+
+static Bool not_(Bool v) { return Bool(!v.value); }
 
 /* cast */
 static Integer float_to_integer(Float x) { return Integer(int64_t(x.value)); }
@@ -120,6 +124,9 @@ struct Range {
     template <typename Stream>
     void dump(Stream& stream) const {
         stream << "Range(" << this->begin.value << ":" << this->end.value << ":" << this->step.value << ")";
+    }
+    bool operator==(const Range& rhs) const {
+        return this->begin == rhs.begin&& this->end == rhs.end && this->step == rhs.step;
     }
 };
 static Range For(Integer b, Integer e) { return Range(b, e, Integer(1)); }
@@ -152,6 +159,9 @@ struct Optional {
         } else {
             stream << "nullopt";
         }
+    }
+    bool operator==(const Optional<V> &rhs) const {
+        return this->value == rhs.value;
     }
     std::optional<V> value;
 };

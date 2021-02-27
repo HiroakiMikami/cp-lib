@@ -34,6 +34,7 @@ export function main(outdir: string) {
             ["op_rightshift", ["lhs", "rhs"]],
             ["op_and", ["lhs", "rhs"]],
             ["op_or", ["lhs", "rhs"]],
+            ["not", ["v"]],
             //cast
             ["float_to_integer", ["x"]],
             ["integer_to_float", ["x"]],
@@ -59,6 +60,7 @@ export function main(outdir: string) {
                 values: [
                     new Num("0", false),
                     new Num("1", false),
+                    new Call(new Identifier("not"), [new Argument(new Identifier("x"), null)]),
                     new Call(new Identifier("float_to_integer"), [new Argument(new Identifier("x"), null)]),
                     new Call(new Identifier("integer_to_float"), [new Argument(new Identifier("x"), null)]),
                     new Call(new Identifier("integer_to_string"), [new Argument(new Identifier("x"), null)]),
