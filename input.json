@@ -1,0 +1,53 @@
+{
+  "typevarNames": {},
+  "createArgNames": {},
+  "argNames": {
+    "read_integer": [],
+    "read_float": [],
+    "read_string": []
+  },
+  "dependencies": [
+    "primitive"
+  ],
+  "snippets": [
+    {
+      "name": "Input",
+      "color": "0",
+      "values": [
+        {
+          "_type": "Do",
+          "expr": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "read_integer"
+            },
+            "args": []
+          }
+        },
+        {
+          "_type": "Do",
+          "expr": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "read_float"
+            },
+            "args": []
+          }
+        },
+        {
+          "_type": "Do",
+          "expr": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "read_string"
+            },
+            "args": []
+          }
+        }
+      ]
+    }
+  ]
+}

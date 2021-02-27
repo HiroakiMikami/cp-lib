@@ -1,4 +1,4 @@
 {
-    "libs": ["primitive", "output"],
-    "defaultLibs": ["primitive", "output"]
+    "libs": ["primitive", "output", "input"],
+    "defaultLibs": ["primitive", "output", "input"]
 }
