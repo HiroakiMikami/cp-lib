@@ -1,4 +1,4 @@
-import { Call, Identifier, Do } from "cp-dsl/out/src/syntax";
+import { Call, Identifier, Assign } from "cp-dsl/out/src/syntax";
 import { save } from "./_utils";
 
 export function main(outdir: string) {
@@ -16,9 +16,21 @@ export function main(outdir: string) {
                 name: "Input",
                 color: "0",
                 values: [
-                    new Do(new Call(new Identifier("read_integer"), [])),
-                    new Do(new Call(new Identifier("read_float"), [])),
-                    new Do(new Call(new Identifier("read_string"), [])),
+                    new Assign(
+                        new Identifier("_N"),
+                        true,
+                        new Call(new Identifier("read_integer"), []),
+                    ),
+                    new Assign(
+                        new Identifier("_f"),
+                        true,
+                        new Call(new Identifier("read_float"), []),
+                    ),
+                    new Assign(
+                        new Identifier("_str"),
+                        true,
+                        new Call(new Identifier("read_string"), []),
+                    ),
                 ]
             },
         ]

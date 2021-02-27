@@ -15,8 +15,13 @@
       "color": "0",
       "values": [
         {
-          "_type": "Do",
-          "expr": {
+          "_type": "Assign",
+          "lhs": {
+            "_type": "Identifier",
+            "id": "_N"
+          },
+          "isDefine": true,
+          "rhs": {
             "_type": "Call",
             "func": {
               "_type": "Identifier",
@@ -26,8 +31,13 @@
           }
         },
         {
-          "_type": "Do",
-          "expr": {
+          "_type": "Assign",
+          "lhs": {
+            "_type": "Identifier",
+            "id": "_f"
+          },
+          "isDefine": true,
+          "rhs": {
             "_type": "Call",
             "func": {
               "_type": "Identifier",
@@ -37,8 +47,13 @@
           }
         },
         {
-          "_type": "Do",
-          "expr": {
+          "_type": "Assign",
+          "lhs": {
+            "_type": "Identifier",
+            "id": "_str"
+          },
+          "isDefine": true,
+          "rhs": {
             "_type": "Call",
             "func": {
               "_type": "Identifier",
