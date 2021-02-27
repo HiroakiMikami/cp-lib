@@ -1,6 +1,7 @@
 #include <cstdint>
 #include <string>
 #include <sstream>
+#include <optional>
 #include <iomanip>
 
 //---code---
@@ -114,5 +115,47 @@ template <typename F>
 static void foreach(const Range& r, F f) {
     for (auto i = r.begin.value; i != r.end.value; i += r.step.value) {
         f(i);
+    }
+}
+
+/* Optional */
+template <typename V>
+struct Optional {
+    Optional() {}
+    Optional(const V& v) : value(v) {}
+    std::string debug_string() const {
+        std::ostringstream oss;
+        this->dump(oss);
+        return oss.str();
+    }
+    template <typename Stream>
+    void dump(Stream& stream) const {
+        if (this->value) {
+            stream << "Some(";
+            this->value.value().dump(stream);
+            stream << ")";
+        } else {
+            stream << "nullopt";
+        }
+    }
+    std::optional<V> value;
+};
+
+template <typename V>
+static Optional<V> AsOptional(const V& v) {
+    return Optional(v);
+}
+template <typename V>
+static Bool valid(const Optional<V> &v) {
+    return Bool(bool(v.value));
+}
+template <typename V>
+static V from_optional(const Optional<V>& v) {
+    return v.value.value();
+}
+template <typename V, typename F>
+static void foreach(const Optional<V>& r, F f) {
+    if (valid(r).value) {
+        f(r.value.value());
     }
 }

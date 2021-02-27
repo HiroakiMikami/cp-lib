@@ -1,15 +1,18 @@
-import { Argument, Call, Identifier, Loop, Num } from "cp-dsl/out/src/syntax";
+import { Argument, Call, Create, Identifier, Loop, Num, PolymorphicType, TypeArgument, TypeIdentifier } from "cp-dsl/out/src/syntax";
 import { save } from "./_utils";
 
 export function main(outdir: string) {
     save(outdir + "./primitive.json", {
-        typevarNames: new Map(),
+        typevarNames: new Map([
+            ["Optional", ["V"]],
+        ]),
         createArgNames: new Map([
             ["Integer", ["x"]],
             ["Float", ["x"]],
             ["String", ["x"]],
             ["Bool", ["x"]],
             ["Range", ["begin", "end", "step"]],
+            ["Optional", []],
         ]),
         argNames: new Map([
             // operators
@@ -43,6 +46,10 @@ export function main(outdir: string) {
             ["ReverseFor", ["b", "e"]],
             ["Rep", ["N"]],
             ["ReverseRep", ["N"]],
+            // optional
+            ["AsOptional", ["v"]],
+            ["valid", ["v"]],
+            ["from_optional", ["v"]],
         ]),
         dependencies: new Set(),
         snippets: [
@@ -64,6 +71,16 @@ export function main(outdir: string) {
                     ),
                     new Call(new Identifier("string_to_integer"), [new Argument(new Identifier("x"), null)]),
                     new Call(new Identifier("string_to_float"), [new Argument(new Identifier("x"), null)]),
+                    new Create(
+                        new PolymorphicType(
+                            new TypeIdentifier("Optional"),
+                            [new TypeArgument("V", null)],
+                        ),
+                        []
+                    ),
+                    new Call(new Identifier("AsOptional"), [new Argument(new Identifier("v"), null)]),
+                    new Call(new Identifier("valid"), [new Argument(new Identifier("v"), null)]),
+                    new Call(new Identifier("from_optional"), [new Argument(new Identifier("v"), null)]),
                 ]
             },
             {

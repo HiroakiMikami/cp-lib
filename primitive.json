@@ -1,5 +1,9 @@
 {
-  "typevarNames": {},
+  "typevarNames": {
+    "Optional": [
+      "V"
+    ]
+  },
   "createArgNames": {
     "Integer": [
       "x"
@@ -17,7 +21,8 @@
       "begin",
       "end",
       "step"
-    ]
+    ],
+    "Optional": []
   },
   "argNames": {
     "op_add": [
@@ -124,6 +129,15 @@
     ],
     "ReverseRep": [
       "N"
+    ],
+    "AsOptional": [
+      "v"
+    ],
+    "valid": [
+      "v"
+    ],
+    "from_optional": [
+      "v"
     ]
   },
   "dependencies": [],
@@ -251,6 +265,75 @@
               "name": {
                 "_type": "Identifier",
                 "id": "x"
+              },
+              "value": null
+            }
+          ]
+        },
+        {
+          "_type": "Create",
+          "type": {
+            "_type": "PolymorphicType",
+            "id": {
+              "_type": "TypeIdentifier",
+              "id": "Optional"
+            },
+            "typevars": [
+              {
+                "_type": "TypeArgument",
+                "name": "V",
+                "type": null
+              }
+            ]
+          },
+          "args": []
+        },
+        {
+          "_type": "Call",
+          "func": {
+            "_type": "Identifier",
+            "id": "AsOptional"
+          },
+          "args": [
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "v"
+              },
+              "value": null
+            }
+          ]
+        },
+        {
+          "_type": "Call",
+          "func": {
+            "_type": "Identifier",
+            "id": "valid"
+          },
+          "args": [
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "v"
+              },
+              "value": null
+            }
+          ]
+        },
+        {
+          "_type": "Call",
+          "func": {
+            "_type": "Identifier",
+            "id": "from_optional"
+          },
+          "args": [
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "v"
               },
               "value": null
             }
