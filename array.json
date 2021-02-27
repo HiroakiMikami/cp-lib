@@ -1,0 +1,230 @@
+{
+  "typevarNames": {
+    "Array": [
+      "V"
+    ]
+  },
+  "createArgNames": {},
+  "argNames": {
+    "size": [
+      "container"
+    ],
+    "add": [
+      "container",
+      "value"
+    ],
+    "at": [
+      "container",
+      "key"
+    ],
+    "update": [
+      "container",
+      "key",
+      "value"
+    ],
+    "remove": [
+      "container",
+      "key"
+    ],
+    "reverse": [
+      "container"
+    ],
+    "sort": [
+      "container",
+      "cmp"
+    ]
+  },
+  "dependencies": [
+    "primitive"
+  ],
+  "snippets": [
+    {
+      "name": "Array",
+      "color": "0",
+      "values": [
+        {
+          "_type": "Call",
+          "func": {
+            "_type": "Identifier",
+            "id": "size"
+          },
+          "args": [
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "container"
+              },
+              "value": null
+            }
+          ]
+        },
+        {
+          "_type": "Do",
+          "expr": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "add"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "container"
+                },
+                "value": null
+              },
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "value"
+                },
+                "value": null
+              }
+            ]
+          }
+        },
+        {
+          "_type": "Call",
+          "func": {
+            "_type": "Identifier",
+            "id": "at"
+          },
+          "args": [
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "container"
+              },
+              "value": null
+            },
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "key"
+              },
+              "value": null
+            }
+          ]
+        },
+        {
+          "_type": "Do",
+          "expr": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "update"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "container"
+                },
+                "value": null
+              },
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "key"
+                },
+                "value": null
+              },
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "value"
+                },
+                "value": null
+              }
+            ]
+          }
+        },
+        {
+          "_type": "Do",
+          "expr": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "remove"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "container"
+                },
+                "value": null
+              },
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "key"
+                },
+                "value": null
+              }
+            ]
+          }
+        },
+        {
+          "_type": "Do",
+          "expr": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "reverse"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "container"
+                },
+                "value": null
+              }
+            ]
+          }
+        },
+        {
+          "_type": "Do",
+          "expr": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "sort"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "container"
+                },
+                "value": null
+              },
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "cmp"
+                },
+                "value": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
