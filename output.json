@@ -1,0 +1,86 @@
+{
+  "typevarNames": {},
+  "createArgNames": {},
+  "argNames": {
+    "set_precision": [
+      "precision"
+    ],
+    "print": [
+      "v"
+    ],
+    "dump": [
+      "v"
+    ]
+  },
+  "dependencies": [
+    "primitive"
+  ],
+  "snippets": [
+    {
+      "name": "Output",
+      "color": "0",
+      "values": [
+        {
+          "_type": "Do",
+          "expr": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "set_precision"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "precision"
+                },
+                "value": null
+              }
+            ]
+          }
+        },
+        {
+          "_type": "Do",
+          "expr": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "print"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "v"
+                },
+                "value": null
+              }
+            ]
+          }
+        },
+        {
+          "_type": "Do",
+          "expr": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "dump"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "v"
+                },
+                "value": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
