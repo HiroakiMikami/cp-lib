@@ -51,21 +51,30 @@ TEST(ArrayTest, reverse_test) {
     EXPECT_EQ(1, xs.value[0].value);
     EXPECT_EQ(0, xs.value[1].value);
 }
-TEST(SortTest, sort_test) {
+TEST(ArrayTest, sort_test) {
     Array<Integer> xs{Integer(2L)};
-    add(xs, Integer(0));
     add(xs, Integer(1));
+    add(xs, Integer(0));
+    sort(xs);
+    EXPECT_EQ(0, xs.value[0].value);
+    EXPECT_EQ(1, xs.value[1].value);
+}
+
+TEST(ArrayTest, sort_by_test) {
+    Array<Integer> xs{Integer(2L)};
+    add(xs, Integer(1));
+    add(xs, Integer(0));
     auto f = [](auto lhs, auto rhs) {
         return lhs.value > rhs.value;
     };
-    sort(xs, f);
+    sort_by(xs, f);
     EXPECT_EQ(1, xs.value[0].value);
     EXPECT_EQ(0, xs.value[1].value);
 
     auto g = [](auto lhs, auto rhs) {
         return lhs.value < rhs.value;
     };
-    sort(xs, g);
+    sort_by(xs, g);
     EXPECT_EQ(0, xs.value[0].value);
     EXPECT_EQ(1, xs.value[1].value);
 }

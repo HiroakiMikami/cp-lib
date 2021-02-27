@@ -14,7 +14,8 @@ export function main(outdir: string) {
             ["update", ["container", "key", "value"]],
             ["remove", ["container", "key"]],
             ["reverse", ["container"]],
-            ["sort", ["container", "cmp"]],
+            ["sort", ["container"]],
+            ["sort_by", ["container", "cmp"]],
         ]),
         dependencies: new Set(["primitive"]),
         snippets: [
@@ -67,6 +68,12 @@ export function main(outdir: string) {
                     new Do(
                         new Call(
                             new Identifier("sort"),
+                            [new Argument(new Identifier("container"), null)],
+                        )
+                    ),
+                    new Do(
+                        new Call(
+                            new Identifier("sort_by"),
                             [
                                 new Argument(new Identifier("container"), null),
                                 new Argument(new Identifier("cmp"), null),

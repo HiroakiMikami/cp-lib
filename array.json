@@ -30,6 +30,9 @@
       "container"
     ],
     "sort": [
+      "container"
+    ],
+    "sort_by": [
       "container",
       "cmp"
     ]
@@ -203,6 +206,26 @@
             "func": {
               "_type": "Identifier",
               "id": "sort"
+            },
+            "args": [
+              {
+                "_type": "Argument",
+                "name": {
+                  "_type": "Identifier",
+                  "id": "container"
+                },
+                "value": null
+              }
+            ]
+          }
+        },
+        {
+          "_type": "Do",
+          "expr": {
+            "_type": "Call",
+            "func": {
+              "_type": "Identifier",
+              "id": "sort_by"
             },
             "args": [
               {
