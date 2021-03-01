@@ -6,29 +6,6 @@
   },
   "createArgNames": {},
   "argNames": {
-    "size": [
-      "container"
-    ],
-    "add": [
-      "container",
-      "value"
-    ],
-    "at": [
-      "container",
-      "key"
-    ],
-    "update": [
-      "container",
-      "key",
-      "value"
-    ],
-    "remove": [
-      "container",
-      "key"
-    ],
-    "reverse": [
-      "container"
-    ],
     "sort": [
       "container"
     ],

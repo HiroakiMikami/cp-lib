@@ -8,12 +8,6 @@ export function main(outdir: string) {
         ]),
         createArgNames: new Map(),
         argNames: new Map([
-            ["size", ["container"]],
-            ["add", ["container", "value"]],
-            ["at", ["container", "key"]],
-            ["update", ["container", "key", "value"]],
-            ["remove", ["container", "key"]],
-            ["reverse", ["container"]],
             ["sort", ["container"]],
             ["sort_by", ["container", "cmp"]],
         ]),

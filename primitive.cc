@@ -5,6 +5,7 @@
 #include <sstream>
 #include <optional>
 #include <iomanip>
+#include <algorithm>
 
 //---code---
 struct Integer {
@@ -109,6 +110,41 @@ static String float_to_string(Float x, Integer precision) {
 }
 static Integer string_to_integer(String x) { return Integer(std::stoi(x.value)); }
 static Float string_to_float(const String &x) { return Float(std::stod(x.value)); }
+
+/* string */
+static Integer size(const String &container)
+{
+    return Integer(container.value.size());
+}
+
+static void add(String &container, const Integer &value)
+{
+    container.value = container.value + char(value.value);
+}
+static const Integer at(const String &container, Integer key)
+{
+    return Integer(container.value.at(key.value));
+}
+static void update(String &container, Integer key, const Integer &value)
+{
+    container.value.at(key.value) = char(value.value);
+}
+static void remove(String &container, Integer key)
+{
+    container.value.erase(container.value.begin() + key.value);
+}
+static void reverse(String &container)
+{
+    std::reverse(container.value.begin(), container.value.end());
+}
+template <typename F>
+static void foreach(String container, F func)
+{
+    for (auto ch : container.value)
+    {
+        func(Integer(ch));
+    }
+}
 
 /* range */
 struct Range {

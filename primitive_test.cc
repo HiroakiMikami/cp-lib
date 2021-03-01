@@ -53,6 +53,31 @@ TEST(StringTest, debug_string_test)
 {
     EXPECT_EQ("foo", String("foo").debug_string());
 }
+TEST(StringTest, primitive_test)
+{
+    auto str = String("foo");
+    EXPECT_EQ(Integer(3), size(str));
+    EXPECT_EQ(at(str, Integer(0)), Integer('f'));
+    update(str, Integer(0), Integer('a'));
+    EXPECT_EQ(str, String("aoo"));
+    add(str, Integer('b'));
+    EXPECT_EQ(str, String("aoob"));
+    remove(str, Integer(0));
+    EXPECT_EQ(str, String("oob"));
+}
+TEST(StringTest, reverse_test)
+{
+    auto str = String("bar");
+    reverse(str);
+    EXPECT_EQ(String("rab"), str);
+}
+TEST(StringTest, foreach_test)
+{
+    auto str = String("foo");
+    std::vector<int> out;
+    foreach(str, [&](auto x) { out.push_back(x.value); });
+    EXPECT_EQ(std::vector<int>({'f', 'o', 'o'}), out);
+}
 
 TEST(BoolTest, debug_string_test)
 {

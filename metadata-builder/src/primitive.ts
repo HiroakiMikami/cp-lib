@@ -1,4 +1,4 @@
-import { Argument, Call, Create, Identifier, Loop, Num, PolymorphicType, TypeArgument, TypeIdentifier } from "cp-dsl/out/src/syntax";
+import { Argument, Call, Create, Do, Identifier, Loop, Num, PolymorphicType, TypeArgument, TypeIdentifier } from "cp-dsl/out/src/syntax";
 import { save } from "./_utils";
 
 export function main(outdir: string) {
@@ -42,6 +42,13 @@ export function main(outdir: string) {
             ["float_to_string", ["x", "precision"]],
             ["string_to_integer", ["x"]],
             ["string_to_float", ["x"]],
+            // string
+            ["size", ["container"]],
+            ["add", ["container", "value"]],
+            ["at", ["container", "key"]],
+            ["update", ["container", "key", "value"]],
+            ["remove", ["container", "key"]],
+            ["reverse", ["container"]],
             // range
             ["For", ["b", "e"]],
             ["ReverseFor", ["b", "e"]],
@@ -124,7 +131,55 @@ export function main(outdir: string) {
                         null
                     ),
                 ]
-            }
+            },
+            {
+                name: "String",
+                color: "0",
+                values: [
+                    new Call(new Identifier("size"), [new Argument(new Identifier("container"), null)]),
+                    new Do(
+                        new Call(
+                            new Identifier("add"),
+                            [
+                                new Argument(new Identifier("container"), null),
+                                new Argument(new Identifier("value"), null),
+                            ]
+                        )
+                    ),
+                    new Call(
+                        new Identifier("at"),
+                        [
+                            new Argument(new Identifier("container"), null),
+                            new Argument(new Identifier("key"), null),
+                        ]
+                    ),
+                    new Do(
+                        new Call(
+                            new Identifier("update"),
+                            [
+                                new Argument(new Identifier("container"), null),
+                                new Argument(new Identifier("key"), null),
+                                new Argument(new Identifier("value"), null),
+                            ]
+                        )
+                    ),
+                    new Do(
+                        new Call(
+                            new Identifier("remove"),
+                            [
+                                new Argument(new Identifier("container"), null),
+                                new Argument(new Identifier("key"), null),
+                            ]
+                        )
+                    ),
+                    new Do(
+                        new Call(
+                            new Identifier("reverse"),
+                            [new Argument(new Identifier("container"), null)]
+                        )
+                    ),
+                ]
+            },
         ]
     })
 }
