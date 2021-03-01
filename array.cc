@@ -64,7 +64,6 @@ static void add(Array<V> &container, const V &value)
 {
     container.value.push_back(value);
 }
-
 template <typename V>
 static const V &at(const Array<V> &container, Integer key)
 {
@@ -108,4 +107,12 @@ template <typename V, typename F>
 static void sort_by(Array<V> &container, F cmp)
 {
     std::sort(container.value.begin(), container.value.end(), cmp);
+}
+
+template <typename V, typename F>
+static void foreach(const Array<V>& container, F func)
+{
+    for (const auto &v : container.value) {
+        func(v);
+    }
 }

@@ -78,3 +78,13 @@ TEST(ArrayTest, sort_by_test) {
     EXPECT_EQ(0, xs.value[0].value);
     EXPECT_EQ(1, xs.value[1].value);
 }
+
+TEST(ArrayTest, foreach_test) {
+    std::vector<int> out;
+    Array<Integer> xs{Integer(2L)};
+    add(xs, Integer(0));
+    add(xs, Integer(1));
+
+    foreach(xs, [&](auto x) { out.push_back(x.value); });
+    EXPECT_EQ(std::vector<int>({0, 1}), out);
+}
