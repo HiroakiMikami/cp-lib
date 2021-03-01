@@ -1,0 +1,77 @@
+{
+  "typevarNames": {},
+  "createArgNames": {},
+  "argNames": {
+    "integer_as_digit": [
+      "x"
+    ],
+    "integer_to_lower_order": [
+      "x"
+    ],
+    "integer_to_upper_order": [
+      "x"
+    ]
+  },
+  "dependencies": [
+    "primitive"
+  ],
+  "snippets": [
+    {
+      "name": "Integer",
+      "color": "0",
+      "values": [
+        {
+          "_type": "Call",
+          "func": {
+            "_type": "Identifier",
+            "id": "integer_as_digit"
+          },
+          "args": [
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "x"
+              },
+              "value": null
+            }
+          ]
+        },
+        {
+          "_type": "Call",
+          "func": {
+            "_type": "Identifier",
+            "id": "integer_to_lower_order"
+          },
+          "args": [
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "x"
+              },
+              "value": null
+            }
+          ]
+        },
+        {
+          "_type": "Call",
+          "func": {
+            "_type": "Identifier",
+            "id": "integer_to_upper_order"
+          },
+          "args": [
+            {
+              "_type": "Argument",
+              "name": {
+                "_type": "Identifier",
+                "id": "x"
+              },
+              "value": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
