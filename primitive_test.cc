@@ -75,7 +75,7 @@ TEST(StringTest, foreach_test)
 {
     auto str = String("foo");
     std::vector<int> out;
-    foreach(str, [&](auto x) { out.push_back(x.value); });
+    foreach(str, [&](auto &x) { out.push_back(x.value); });
     EXPECT_EQ(std::vector<int>({'f', 'o', 'o'}), out);
 }
 

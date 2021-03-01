@@ -142,7 +142,8 @@ static void foreach(String container, F func)
 {
     for (auto ch : container.value)
     {
-        func(Integer(ch));
+        auto v = Integer(ch);
+        func(v);
     }
 }
 
