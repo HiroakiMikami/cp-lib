@@ -175,7 +175,8 @@ static Range ReverseRep(Integer N) { return Range(Integer(N.value - 1), Integer(
 template <typename F>
 static void foreach(const Range& r, F f) {
     for (auto i = r.begin.value; i != r.end.value; i += r.step.value) {
-        if (f(Integer(i))) {
+        auto _i = Integer(i);
+        if (f(_i)) {
             break ;
         }
     }
@@ -189,7 +190,7 @@ struct Forever {
     void dump(Stream& stream) const {
         stream << "Forever";
     }
-    bool operator==(const Forever& rhs) const {
+    bool operator==(__attribute__((unused)) const Forever& rhs) const {
         return true;
     }
 };
