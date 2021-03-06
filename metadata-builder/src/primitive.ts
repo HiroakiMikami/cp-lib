@@ -13,6 +13,7 @@ export function main(outdir: string) {
             ["Bool", ["x"]],
             ["Range", ["begin", "end", "step"]],
             ["Optional", []],
+            ["Forever", []],
         ]),
         argNames: new Map([
             // operators

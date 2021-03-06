@@ -22,7 +22,8 @@
       "end",
       "step"
     ],
-    "Optional": []
+    "Optional": [],
+    "Forever": []
   },
   "argNames": {
     "op_add": [

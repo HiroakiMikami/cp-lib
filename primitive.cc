@@ -181,6 +181,29 @@ static void foreach(const Range& r, F f) {
     }
 }
 
+struct Forever {
+    std::string debug_string() const {
+        return "Forever";
+    }
+    template <typename Stream>
+    void dump(Stream& stream) const {
+        stream << "Forever";
+    }
+    bool operator==(const Forever& rhs) const {
+        return true;
+    }
+};
+template <typename F>
+static void foreach(__attribute__((unused)) const Forever& r, F f) {
+    Integer i{0};
+    while (true) {
+        if (f(i)) {
+            break ;
+        }
+        i = Integer(i.value + 1);
+    }
+}
+
 /* Optional */
 template <typename V>
 struct Optional {

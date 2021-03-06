@@ -150,6 +150,17 @@ TEST(RangeTest, foreach_test)
     EXPECT_EQ(std::vector<int64_t>({2L, 1L}), ret);
 }
 
+TEST(ForeverTest, debug_string_test) {
+    EXPECT_EQ("Forever", Forever().debug_string());
+}
+TEST(ForeverTest, foreach_test) {
+
+    std::vector<int64_t> ret;
+    foreach (Forever(), [&](auto i) { ret.push_back(i.value); return i.value == 3L; })
+        ;
+    EXPECT_EQ(std::vector<int64_t>({0L, 1L, 2L, 3L}), ret);
+}
+
 TEST(OptionalTest, constructor_test)
 {
     Optional<Integer> x;
