@@ -24,22 +24,22 @@ struct Input
 {
 };
 template <typename V>
-static V read(const Input<V> &x)
+static V read(__attribute__((unused)) const Input<V> &x)
 {
     _initialize();
     V v;
     std::cin >> v;
     return v;
 }
-static Integer read(const Input<Integer> &x)
+static Integer read(__attribute__((unused))const Input<Integer> &x)
 {
     return Integer(read(Input<int64_t>()));
 }
-static Float read(const Input<Float> &x)
+static Float read(__attribute__((unused))const Input<Float> &x)
 {
     return Float(read(Input<double>()));
 }
-static String read(const Input<String> &x)
+static String read(__attribute__((unused))const Input<String> &x)
 {
     return String(read(Input<std::string>()));
 }
