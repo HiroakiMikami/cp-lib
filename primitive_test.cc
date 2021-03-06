@@ -122,38 +122,33 @@ TEST(RangeTest, debug_string_test)
 {
     EXPECT_EQ("Range(0:1:1)", Range(Integer(0), Integer(1), Integer(1)).debug_string());
 }
+TEST(RangeTest, helper_test)
+{
+    EXPECT_EQ(Range(Integer(0), Integer(3), Integer(1)), Rep(3));
+    EXPECT_EQ(Range(Integer(2), Integer(-1), Integer(-1)), ReverseRep(3));
+    EXPECT_EQ(Range(Integer(1), Integer(3), Integer(1)), For(1, 3));
+    EXPECT_EQ(Range(Integer(2), Integer(0), Integer(-1)), ReverseFor(1, 3));
+
+}
 TEST(RangeTest, foreach_test)
 {
     std::vector<int64_t> ret;
-    foreach (Rep(3), [&](auto i) { ret.push_back(i); return false; })
+    foreach (Rep(3), [&](auto i) { ret.push_back(i.value); return false; })
         ;
     EXPECT_EQ(std::vector<int64_t>({0L, 1L, 2L}), ret);
 
     ret.clear();
-    foreach (Rep(3), [&](auto i) { ret.push_back(i); return true; })
+    foreach (Rep(3), [&](auto i) { ret.push_back(i.value); return true; })
         ;
     EXPECT_EQ(std::vector<int64_t>({0L}), ret);
-
-    ret.clear();
-    foreach (ReverseRep(3), [&](auto i) { ret.push_back(i); return false; })
-        ;
-    EXPECT_EQ(std::vector<int64_t>({2L, 1L, 0L}), ret);
-
-    ret.clear();
-    foreach (For(1, 3), [&](auto i) { ret.push_back(i); return false; })
-        ;
-    EXPECT_EQ(std::vector<int64_t>({1L, 2L}), ret);
-
-    ret.clear();
-    foreach (ReverseFor(1, 3), [&](auto i) { ret.push_back(i); return false; })
-        ;
-    EXPECT_EQ(std::vector<int64_t>({2L, 1L}), ret);
 }
 
-TEST(ForeverTest, debug_string_test) {
+TEST(ForeverTest, debug_string_test)
+{
     EXPECT_EQ("Forever", Forever().debug_string());
 }
-TEST(ForeverTest, foreach_test) {
+TEST(ForeverTest, foreach_test)
+{
 
     std::vector<int64_t> ret;
     foreach (Forever(), [&](auto i) { ret.push_back(i.value); return i.value == 3L; })

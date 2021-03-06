@@ -175,7 +175,7 @@ static Range ReverseRep(Integer N) { return Range(Integer(N.value - 1), Integer(
 template <typename F>
 static void foreach(const Range& r, F f) {
     for (auto i = r.begin.value; i != r.end.value; i += r.step.value) {
-        if (f(i)) {
+        if (f(Integer(i))) {
             break ;
         }
     }
