@@ -113,6 +113,8 @@ template <typename V, typename F>
 static void foreach(const Array<V>& container, F func)
 {
     for (const auto &v : container.value) {
-        func(v);
+        if (func(v)) {
+            break;
+        }
     }
 }

@@ -85,6 +85,10 @@ TEST(ArrayTest, foreach_test) {
     add(xs, Integer(0));
     add(xs, Integer(1));
 
-    foreach(xs, [&](auto x) { out.push_back(x.value); });
+    foreach(xs, [&](auto x) { out.push_back(x.value); return false; });
     EXPECT_EQ(std::vector<int>({0, 1}), out);
+
+    out.clear();
+    foreach(xs, [&](auto x) { out.push_back(x.value); return true; });
+    EXPECT_EQ(std::vector<int>({0}), out);
 }

@@ -75,8 +75,14 @@ TEST(StringTest, foreach_test)
 {
     auto str = String("foo");
     std::vector<int> out;
-    foreach(str, [&](auto &x) { out.push_back(x.value); });
+    foreach (str, [&](auto &x) { out.push_back(x.value); return false; })
+        ;
     EXPECT_EQ(std::vector<int>({'f', 'o', 'o'}), out);
+
+    out.clear();
+    foreach (str, [&](auto &x) { out.push_back(x.value); return true; })
+        ;
+    EXPECT_EQ(std::vector<int>({'f'}), out);
 }
 
 TEST(BoolTest, debug_string_test)
@@ -119,22 +125,27 @@ TEST(RangeTest, debug_string_test)
 TEST(RangeTest, foreach_test)
 {
     std::vector<int64_t> ret;
-    foreach (Rep(3), [&](auto i) { ret.push_back(i); })
+    foreach (Rep(3), [&](auto i) { ret.push_back(i); return false; })
         ;
     EXPECT_EQ(std::vector<int64_t>({0L, 1L, 2L}), ret);
 
     ret.clear();
-    foreach (ReverseRep(3), [&](auto i) { ret.push_back(i); })
+    foreach (Rep(3), [&](auto i) { ret.push_back(i); return true; })
+        ;
+    EXPECT_EQ(std::vector<int64_t>({0L}), ret);
+
+    ret.clear();
+    foreach (ReverseRep(3), [&](auto i) { ret.push_back(i); return false; })
         ;
     EXPECT_EQ(std::vector<int64_t>({2L, 1L, 0L}), ret);
 
     ret.clear();
-    foreach (For(1, 3), [&](auto i) { ret.push_back(i); })
+    foreach (For(1, 3), [&](auto i) { ret.push_back(i); return false; })
         ;
     EXPECT_EQ(std::vector<int64_t>({1L, 2L}), ret);
 
     ret.clear();
-    foreach (ReverseFor(1, 3), [&](auto i) { ret.push_back(i); })
+    foreach (ReverseFor(1, 3), [&](auto i) { ret.push_back(i); return false; })
         ;
     EXPECT_EQ(std::vector<int64_t>({2L, 1L}), ret);
 }
@@ -161,13 +172,17 @@ TEST(OptionalTest, foreach_test)
 {
     Optional<Integer> x;
     bool called = false;
-    foreach(x, [&](auto x) {
+    foreach (x, [&](auto x) {
         called = true;
-    });
+        return false;
+    })
+        ;
     EXPECT_FALSE(called);
     x = AsOptional(Integer(0));
-    foreach(x, [&](auto x) {
+    foreach (x, [&](auto x) {
         called = true;
-    });
+        return false;
+    })
+        ;
     EXPECT_TRUE(called);
 }

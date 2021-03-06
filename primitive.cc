@@ -143,7 +143,9 @@ static void foreach(String container, F func)
     for (auto ch : container.value)
     {
         auto v = Integer(ch);
-        func(v);
+        if (func(v)) {
+            break ;
+        }
     }
 }
 
@@ -173,7 +175,9 @@ static Range ReverseRep(Integer N) { return Range(Integer(N.value - 1), Integer(
 template <typename F>
 static void foreach(const Range& r, F f) {
     for (auto i = r.begin.value; i != r.end.value; i += r.step.value) {
-        f(i);
+        if (f(i)) {
+            break ;
+        }
     }
 }
 
