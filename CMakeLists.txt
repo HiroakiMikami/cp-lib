@@ -18,6 +18,4 @@ file(GLOB files *.cc **/*.cc)
 add_executable(gtest ${files})
 target_link_libraries(gtest ${GTEST_BOTH_LIBRARIES})
 target_link_libraries(gtest pthread)
-add_test(
-        NAME run-test
-        COMMAND gtest)
+add_test(NAME run-test COMMAND gtest)
