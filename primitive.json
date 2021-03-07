@@ -504,6 +504,22 @@
             ]
           },
           "body": null
+        },
+        {
+          "_type": "Loop",
+          "id": {
+            "_type": "Identifier",
+            "id": "_i"
+          },
+          "iterable": {
+            "_type": "Create",
+            "type": {
+              "_type": "TypeIdentifier",
+              "id": "Forever"
+            },
+            "args": []
+          },
+          "body": null
         }
       ]
     },

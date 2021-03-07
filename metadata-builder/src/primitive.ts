@@ -131,6 +131,11 @@ export function main(outdir: string) {
                         ),
                         null
                     ),
+                    new Loop(
+                        new Identifier("_i"),
+                        new Create(new TypeIdentifier("Forever"), []),
+                        null
+                    ),
                 ]
             },
             {
