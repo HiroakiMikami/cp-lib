@@ -59,6 +59,16 @@ struct Bool {
     }
 };
 
+/* control */
+template <typename Cond, typename Body>
+static void _while(Cond cond, Body body) {
+    while (cond()) {
+        if (body()) {
+            break;
+        }
+    }
+}
+
 /* operators */
 template <typename V0, typename V1>
 static Bool op_eq(V0 lhs, V1 rhs) { return Bool(lhs == rhs); }

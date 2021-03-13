@@ -107,6 +107,25 @@ TEST(BoolTest, op_test)
     EXPECT_FALSE(not_(t));
 }
 
+TEST(WhileTest, simple_test)
+{
+    int x = 0;
+    std::vector<int> xs;
+    _while(
+        [&]() -> Bool{ return Bool(x != 2); },
+        [&]() -> bool { xs.push_back(x); x += 1; return false; }
+    );
+    EXPECT_EQ(std::vector<int>({0, 1}), xs);
+
+    x = 0;
+    xs.clear();
+    _while(
+        [&]() -> Bool{ return Bool(x != 2); },
+        [&]() -> bool { xs.push_back(x); x += 1; return true; }
+    );
+    EXPECT_EQ(std::vector<int>({0}), xs);
+}
+
 TEST(PrimitiveTest, cast_test)
 {
     EXPECT_EQ(0L, float_to_integer(Float(0.5)).value);
