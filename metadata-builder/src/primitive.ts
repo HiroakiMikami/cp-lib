@@ -1,4 +1,4 @@
-import { Argument, Call, Create, Do, Identifier, Loop, Num, PolymorphicType, TypeArgument, TypeIdentifier } from "cp-dsl/out/src/syntax";
+import { Argument, Call, Create, Do, Identifier, Foreach, Num, PolymorphicType, TypeArgument, TypeIdentifier } from "cp-dsl/out/src/syntax";
 import { save } from "./_utils";
 
 export function main(outdir: string) {
@@ -97,7 +97,7 @@ export function main(outdir: string) {
                 name: "Loop",
                 color: "0",
                 values: [
-                    new Loop(
+                    new Foreach(
                         new Identifier("_i"),
                         new Call(
                             new Identifier("For"),
@@ -106,7 +106,7 @@ export function main(outdir: string) {
                         ),
                         null
                     ),
-                    new Loop(
+                    new Foreach(
                         new Identifier("_i"),
                         new Call(
                             new Identifier("ReverseFor"),
@@ -115,7 +115,7 @@ export function main(outdir: string) {
                         ),
                         null
                     ),
-                    new Loop(
+                    new Foreach(
                         new Identifier("_i"),
                         new Call(
                             new Identifier("Rep"),
@@ -123,7 +123,7 @@ export function main(outdir: string) {
                         ),
                         null
                     ),
-                    new Loop(
+                    new Foreach(
                         new Identifier("_i"),
                         new Call(
                             new Identifier("ReverseRep"),
@@ -131,7 +131,7 @@ export function main(outdir: string) {
                         ),
                         null
                     ),
-                    new Loop(
+                    new Foreach(
                         new Identifier("_i"),
                         new Create(new TypeIdentifier("Forever"), []),
                         null

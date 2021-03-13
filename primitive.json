@@ -390,7 +390,7 @@
       "color": "0",
       "values": [
         {
-          "_type": "Loop",
+          "_type": "Foreach",
           "id": {
             "_type": "Identifier",
             "id": "_i"
@@ -423,7 +423,7 @@
           "body": null
         },
         {
-          "_type": "Loop",
+          "_type": "Foreach",
           "id": {
             "_type": "Identifier",
             "id": "_i"
@@ -456,7 +456,7 @@
           "body": null
         },
         {
-          "_type": "Loop",
+          "_type": "Foreach",
           "id": {
             "_type": "Identifier",
             "id": "_i"
@@ -481,7 +481,7 @@
           "body": null
         },
         {
-          "_type": "Loop",
+          "_type": "Foreach",
           "id": {
             "_type": "Identifier",
             "id": "_i"
@@ -506,7 +506,7 @@
           "body": null
         },
         {
-          "_type": "Loop",
+          "_type": "Foreach",
           "id": {
             "_type": "Identifier",
             "id": "_i"
